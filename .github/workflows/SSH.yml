@@ -4,7 +4,7 @@ on: [push]
 
 jobs:
  build:
-  runs-on: ubuntu-latest
+  runs-on: NV
   env:
     DOTNET_NOLOGO: true
   steps:
