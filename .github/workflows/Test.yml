@@ -1,18 +1,14 @@
-name: SO-023 Create folder
+name: Node CI
 
-on:
-  push:
-    branches: [ main ]
-
-  # Allows you to run this workflow manually from the Actions tab
-  workflow_dispatch:
+on: [push]
 
 jobs:
-  build:
-    runs-on: NV
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-      - name: Create folder
-        run: |
-          mkdir -p TestScripts/subscriptsfile
+ build:
+  runs-on: NV
+  env:
+    DOTNET_NOLOGO: true
+  steps:
+    - uses: actions/checkout@main
+    - uses: actions/setup-dotnet@v2
+      with:
+        dotnet-version: '3.1.x' # SDK Version to use."
