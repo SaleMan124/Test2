@@ -1,14 +1,19 @@
-name: Node CI
+name: SO-023 Create folder
 
-on: [push]
+on:
+  push:
+    branches: [ main ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
 
 jobs:
- build:
-  runs-on: NV
-  env:
-    DOTNET_NOLOGO: true
-  steps:
-    - uses: actions/checkout@main
-    - uses: actions/setup-dotnet@v2
-      with:
-        dotnet-version: '3.1.x' # SDK Version to use."
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Create folder
+        run: |
+          mkdir -p myNewFolder/myNewSubFolder && cp -R dist myNewFolder/myNewSubFolder
+          ls myNewFolder/MyNewSubFolder
